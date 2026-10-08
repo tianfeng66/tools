@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d0f">
+  <meta name="description" content="田丰的工具导航，按素材与设计、视频与 AI、专业知识库 Agent、macOS 效率分类，查看公开工具、技能与在线 Agent 的用途和入口。">
+  <title>工具导航 · 田丰</title>
+  <style>
+    :root { color-scheme: dark; font-family: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif; background: #090d0f; color: #f4f2ec; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; }
+    .galaxy-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 72% 20%, #142035 0, transparent 46%), radial-gradient(ellipse at 12% 84%, #10272c 0, transparent 48%), #080d15; }
+    .galaxy-bg canvas { display: block; width: 100%; height: 100%; }
+    .galaxy-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,13,21,.63), rgba(8,13,21,.25) 55%, rgba(8,13,21,.18)); }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid #84ddd3; outline-offset: 4px; }
+    .wrap { position: relative; z-index: 1; width: min(1160px, calc(100% - 44px)); margin: auto; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; border-bottom: 1px solid #2b3738; }
+    header a { text-decoration: none; }
+    .brand { font-size: 21px; font-weight: 800; letter-spacing: -.04em; }
+    .brand span { margin-left: 10px; color: #8da09b; font-size: 11px; font-weight: 500; letter-spacing: .18em; }
+    .back { color: #bac8c2; font-size: 13px; }
+    .back:hover, .links a:hover, footer a:hover { color: #84ddd3; }
+    .hero { padding: 82px 0 65px; border-bottom: 1px solid #2b3738; background: linear-gradient(90deg, rgba(9,13,15,.61), rgba(9,13,15,.16) 72%, transparent); }
+    .eyebrow { color: #84ddd3; font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+    h1 { margin: 20px 0 24px; font-size: clamp(58px, 10vw, 112px); line-height: 1; letter-spacing: -.075em; }
+    h1 span { color: #84ddd3; }
+    .intro { max-width: 680px; margin: 0; color: #d5dfd9; font-size: 16px; line-height: 1.9; }
+    .summary { margin: 18px 0 0; color: #a8bdb4; font-size: 12px; letter-spacing: .08em; }
+    nav { display: flex; flex-wrap: wrap; gap: 9px; padding: 29px 0 18px; }
+    nav a { padding: 9px 15px; border: 1px solid #3b4b48; border-radius: 99px; color: #c8d9d1; font-size: 12px; text-decoration: none; }
+    nav a:hover { border-color: #84ddd3; color: #84ddd3; }
+    section { padding: 30px 0 44px; border-top: 1px solid #2b3738; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 20px; }
+    h2 { margin: 0; font-size: clamp(27px, 3.8vw, 38px); letter-spacing: -.05em; }
+    .section-head p { margin: 0; color: #859690; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    article { display: flex; flex-direction: column; min-height: 265px; padding: 26px; border: 1px solid #3b5352; border-radius: 18px; background: rgba(11,19,22,.89); backdrop-filter: blur(10px); }
+    .meta { display: flex; justify-content: space-between; gap: 12px; align-items: start; color: #83d1c6; font-size: 11px; letter-spacing: .11em; }
+    .platform { padding: 5px 9px; border: 1px solid #3d4e4a; border-radius: 99px; color: #a4b8af; white-space: nowrap; letter-spacing: 0; }
+    h3 { margin: 29px 0 9px; font-size: 24px; letter-spacing: -.04em; }
+    article p { margin: 0; color: #afbeb7; font-size: 13px; line-height: 1.75; }
+    article .detail { margin-top: 8px; color: #7f9289; font-size: 12px; }
+    .links { display: flex; flex-wrap: wrap; gap: 13px 20px; margin-top: auto; padding-top: 25px; }
+    .links a { color: #b6e9dd; text-decoration: none; font-size: 12px; font-weight: 700; }
+    .note { margin: 15px 0 65px; padding: 22px 25px; border: 1px solid #3d4a45; border-radius: 16px; background: rgba(9,13,15,.76); color: #aebdb5; font-size: 12px; line-height: 1.85; }
+    .note strong { color: #f4f2ec; }
+    footer { display: flex; justify-content: space-between; gap: 16px; padding: 25px 0 38px; border-top: 1px solid #2b3738; color: #84928c; font-size: 11px; }
+    footer a { color: #b6e9dd; text-decoration: none; }
+    @media (max-width: 720px) { .section-head { display: block; } .section-head p { margin-top: 8px; } .grid { grid-template-columns: 1fr; } article { min-height: 230px; } }
+    @media (max-width: 500px) { .wrap { width: min(100% - 32px, 1160px); } .hero { padding: 62px 0 50px; } footer { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <div class="galaxy-bg" id="galaxy-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <header><a class="brand" href="https://github.com/tianfeng66">田丰 <span>TIAN FENG</span></a><a class="back" href="https://github.com/tianfeng66">← 查看 GitHub 项目</a></header>
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Independent projects / Curated index</div>
+        <h1>工具导航<span>.</span></h1>
+        <p class="intro">把日常反复遇到的问题做成可用的工具。按用途找到项目或在线 Agent，查看适用环境、功能和使用说明。</p>
+        <p class="summary">12 个公开工具、技能与 Agent · 04 个使用场景</p>
+      </div>
+      <nav aria-label="工具分类"><a href="#materials">素材与设计</a><a href="#video">视频与 AI</a><a href="#knowledge-agent">专业知识库 Agent</a><a href="#mac">macOS 效率</a></nav>
+      <section id="materials" aria-labelledby="materials-title">
+        <div class="section-head"><h2 id="materials-title">素材与设计</h2><p>整理素材、精修图片、检查语言、交付设计文件</p></div>
+        <div class="grid">
+          <article><div class="meta"><span>01 / IMAGE</span><span class="platform">Chrome / Edge</span></div><h3>图片工具箱</h3><p>在浏览器本地为图片评分、查重、检查黑白边与小图，并整理文件夹。</p><p class="detail">单个 HTML 文件；下载后在桌面浏览器打开。</p><div class="links"><a href="https://github.com/tianfeng66/image-toolbox">项目说明 ↗</a><a href="https://github.com/tianfeng66/image-toolbox/blob/main/%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7%E7%AE%B1-%E5%85%A8%E5%8A%9F%E8%83%BD%E7%89%88.html">查看工具文件 ↗</a></div></article>
+          <article><div class="meta"><span>02 / IMAGE</span><span class="platform">Mac / Windows</span></div><h3>图片分拣与 LUT 调色</h3><p>批量检查图片中的文字、色彩和构图，支持去边裁剪、生成 LUT 并批量调色。</p><p class="detail">本机运行；首次使用需安装 Python 与依赖。分拣移出会移动原文件。</p><div class="links"><a href="https://github.com/tianfeng66/image-sorter-lut">安装与说明 ↗</a><a href="https://github.com/tianfeng66/image-sorter-lut/archive/refs/heads/main.zip">下载源码 ZIP ↗</a></div></article>
+          <article><div class="meta"><span>03 / WORKFLOW</span><span class="platform">ComfyUI / GPU</span></div><h3>人像精修 ComfyUI 工作流</h3><p>用 Z-Image Turbo 三轮低重绘补足人像细节，尽量保留原图的构图与颜色。</p><p class="detail">需 ComfyUI、4 个插件和约 20.7 GB 模型；尚未完整跑通验证。</p><div class="links"><a href="https://github.com/tianfeng66/comfyui-workflows/tree/main/portrait-refine">工作流说明 ↗</a><a href="https://github.com/tianfeng66/comfyui-workflows/raw/refs/heads/main/portrait-refine/portrait_refine_003.json">下载工作流 JSON ↗</a></div></article>
+          <article><div class="meta"><span>04 / IMAGE</span><span class="platform">Chrome</span></div><h3>长图切分工具</h3><p>自动识别长图的合理切口，也能手动移动切分线、预览并批量导出。</p><p class="detail">源图只读，切片保存在单独目录。</p><div class="links"><a href="https://github.com/tianfeng66/long-image-splitter">项目说明 ↗</a><a href="https://github.com/tianfeng66/long-image-splitter/blob/main/%E9%95%BF%E5%9B%BE%E5%88%87%E5%88%86.html">查看网页版文件 ↗</a></div></article>
+          <article><div class="meta"><span>05 / DESIGN</span><span class="platform">macOS 13+</span></div><h3>PSD 字体打包</h3><p>识别 PSD 实际使用的字体，把可用字体和设计文件一起打包，方便交付。</p><p class="detail">缺失或不宜打包的字体会列在清单中。</p><div class="links"><a href="https://github.com/tianfeng66/psd-font-pack">项目说明 ↗</a><a href="https://github.com/tianfeng66/psd-font-pack/releases/latest">下载 ↗</a></div></article>
+          <article><div class="meta"><span>06 / OCR</span><span class="platform">macOS 13+</span></div><h3>小语种检查</h3><p>检测图片、PDF、Word 等文件中的小语种文字，标记语种并分类导出。</p><p class="detail">本机处理；Intel Mac 首次启动需联网准备依赖。</p><div class="links"><a href="https://github.com/tianfeng66/minor-language-checker">项目说明 ↗</a><a href="https://github.com/tianfeng66/minor-language-checker/releases/latest">下载 ↗</a></div></article>
+        </div>
+      </section>
+      <section id="video" aria-labelledby="video-title">
+        <div class="section-head"><h2 id="video-title">视频与 AI</h2><p>获取素材、提取画面、制作人物短片</p></div>
+        <div class="grid">
+          <article><div class="meta"><span>07 / VIDEO</span><span class="platform">macOS</span></div><h3>YouTube 下载 + 抽帧</h3><p>下载视频或音频，再按间隔、帧数、帧率或关键帧提取画面。</p><p class="detail">提供浏览器界面和命令行入口；首次使用需安装运行环境。</p><div class="links"><a href="https://github.com/tianfeng66/youtube-downloader-frame-extractor">安装与说明 ↗</a></div></article>
+          <article><div class="meta"><span>08 / AI SKILL</span><span class="platform">Codex 技能</span></div><h3>AI 名人介绍视频生成</h3><p>为人物科普短片准备经事实核验的旁白、分段提示词和参考图方案。</p><p class="detail">交付视频制作包；不自动渲染完整视频。</p><div class="links"><a href="https://github.com/tianfeng66/ai-mingren-video-generation">安装与说明 ↗</a></div></article>
+          <article><div class="meta"><span>09 / WORKFLOW</span><span class="platform">扣子工作流</span></div><h3>动漫人物传记视频工作流</h3><p>从人物设定生成横屏动漫传记视频的分镜、人物参考图、视频、中文旁白与字幕。</p><p class="detail">草稿版；下载 ZIP 导入扣子，使用前检查模型和插件。</p><div class="links"><a href="https://github.com/tianfeng66/coze-anime-biography-workflow">导入与说明 ↗</a><a href="https://github.com/tianfeng66/coze-anime-biography-workflow/raw/refs/heads/main/Workflow-zimeititwo-draft-4143.zip">下载工作流 ↗</a></div></article>
+        </div>
+      </section>
+      <section id="knowledge-agent" aria-labelledby="knowledge-agent-title">
+        <div class="section-head"><h2 id="knowledge-agent-title">专业知识库 Agent</h2><p>在线体验专业知识问答</p></div>
+        <div class="grid">
+          <article><div class="meta"><span>10 / AGENT</span><span class="platform">Dify 在线体验</span></div><h3>多模态大模型美学知识库</h3><p>基于 Dify 发布的专业知识库 Agent，可打开网页进行对话体验。</p><p class="detail">在线使用；具体回答请结合知识库资料核对。</p><div class="links"><a href="https://udify.app/chat/sAQfRGtYLpmnnPi0">打开 Agent ↗</a></div></article>
+        </div>
+      </section>
+      <section id="mac" aria-labelledby="mac-title">
+        <div class="section-head"><h2 id="mac-title">macOS 效率</h2><p>更快找到文件，更省心处理压缩包</p></div>
+        <div class="grid">
+          <article><div class="meta"><span>11 / MAC</span><span class="platform">macOS 14+</span></div><h3>秒搜</h3><p>利用 Spotlight 索引即时搜索本机文件名和路径，支持通配符与类型筛选。</p><p class="detail">本机搜索，不上传文件内容。</p><div class="links"><a href="https://github.com/tianfeng66/miaosou">项目说明 ↗</a><a href="https://github.com/tianfeng66/miaosou/releases/latest">下载 ↗</a></div></article>
+          <article><div class="meta"><span>12 / MAC</span><span class="platform">macOS 13+</span></div><h3>轻压 QingYa</h3><p>压缩、解压和浏览压缩包，自动识别常见中文文件名编码。</p><p class="detail">支持多种格式；加密 RAR / 7z 的限制见项目说明。</p><div class="links"><a href="https://github.com/tianfeng66/qingya-mac-archiver">项目说明 ↗</a><a href="https://github.com/tianfeng66/qingya-mac-archiver/releases/latest">下载 ↗</a></div></article>
+        </div>
+      </section>
+      <aside class="note"><strong>使用前看一眼项目说明。</strong> 浏览器工具、本机网页工具、macOS 应用、ComfyUI 与扣子工作流、在线 Agent 的使用方式各不相同。仓库项目的最新说明以对应 README 为准；在线 Agent 通过专属链接访问。</aside>
+    </main>
+    <footer><span>田丰 · 工具导航</span><a href="https://github.com/tianfeng66">查看全部 GitHub 项目 ↗</a></footer>
+  </div>
+  <script type="module">
+import { Renderer, Program, Mesh, Triangle } from 'https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm';
+
+const vertexShader = `
+attribute vec2 uv;
+attribute vec2 position;
+
+varying vec2 vUv;
+
+void main() {
+  vUv = uv;
+  gl_Position = vec4(position, 0, 1);
+}
+`;
+
+const fragmentShader = `
+precision highp float;
+
+uniform float uTime;
+uniform vec3 uResolution;
+uniform vec2 uFocal;
+uniform vec2 uRotation;
+uniform float uStarSpeed;
+uniform float uDensity;
+uniform float uHueShift;
+uniform float uSpeed;
+uniform vec2 uMouse;
+uniform float uGlowIntensity;
+uniform float uSaturation;
+uniform bool uMouseRepulsion;
+uniform float uTwinkleIntensity;
+uniform float uRotationSpeed;
+uniform float uRepulsionStrength;
+uniform float uMouseActiveFactor;
+uniform float uAutoCenterRepulsion;
+uniform bool uTransparent;
+uniform float uLightMode;
+
+varying vec2 vUv;
+
+#define NUM_LAYER 4.0
+#define STAR_COLOR_CUTOFF 0.2
+#define MAT45 mat2(0.7071, -0.7071, 0.7071, 0.7071)
+#define PERIOD 3.0
+
+float Hash21(vec2 p) {
+  p = fract(p * vec2(123.34, 456.21));
+  p += dot(p, p + 45.32);
+  return fract(p.x * p.y);
+}
+
+float tri(float x) {
+  return abs(fract(x) * 2.0 - 1.0);
+}
+
+float tris(float x) {
+  float t = fract(x);
+  return 1.0 - smoothstep(0.0, 1.0, abs(2.0 * t - 1.0));
+}
+
+float trisn(float x) {
+  float t = fract(x);
+  return 2.0 * (1.0 - smoothstep(0.0, 1.0, abs(2.0 * t - 1.0))) - 1.0;
+}
+
+vec3 hsv2rgb(vec3 c) {
+  vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+  vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+  return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+float Star(vec2 uv, float flare) {
+  float d = length(uv);
+  float m = (0.05 * uGlowIntensity) / d;
+  float rays = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
+  m += rays * flare * uGlowIntensity;
+  uv *= MAT45;
+  rays = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
+  m += rays * 0.3 * flare * uGlowIntensity;
+  m *= smoothstep(1.0, 0.2, d);
+  return m;
+}
+
+vec3 StarLayer(vec2 uv) {
+  vec3 col = vec3(0.0);
+
+  vec2 gv = fract(uv) - 0.5; 
+  vec2 id = floor(uv);
+
+  for (int y = -1; y <= 1; y++) {
+    for (int x = -1; x <= 1; x++) {
+      vec2 offset = vec2(float(x), float(y));
+      vec2 si = id + vec2(float(x), float(y));
+      float seed = Hash21(si);
+      float size = fract(seed * 345.32);
+      float glossLocal = tri(uStarSpeed / (PERIOD * seed + 1.0));
+      float flareSize = smoothstep(0.9, 1.0, size) * glossLocal;
+
+      float red = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(si + 1.0)) + STAR_COLOR_CUTOFF;
+      float blu = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(si + 3.0)) + STAR_COLOR_CUTOFF;
+      float grn = min(red, blu) * seed;
+      vec3 base = vec3(red, grn, blu);
+      
+      float hue = atan(base.g - base.r, base.b - base.r) / (2.0 * 3.14159) + 0.5;
+      hue = fract(hue + uHueShift / 360.0);
+      float sat = length(base - vec3(dot(base, vec3(0.299, 0.587, 0.114)))) * uSaturation;
+      float val = max(max(base.r, base.g), base.b);
+      base = hsv2rgb(vec3(hue, sat, val));
+
+      vec2 pad = vec2(tris(seed * 34.0 + uTime * uSpeed / 10.0), tris(seed * 38.0 + uTime * uSpeed / 30.0)) - 0.5;
+
+      float star = Star(gv - offset - pad, flareSize);
+      vec3 color = base;
+
+      float twinkle = trisn(uTime * uSpeed + seed * 6.2831) * 0.5 + 1.0;
+      twinkle = mix(1.0, twinkle, uTwinkleIntensity);
+      star *= twinkle;
+      
+      col += star * size * color;
+    }
+  }
+
+  return col;
+}
+
+void main() {
+  vec2 focalPx = uFocal * uResolution.xy;
+  vec2 uv = (vUv * uResolution.xy - focalPx) / uResolution.y;
+
+  vec2 mouseNorm = uMouse - vec2(0.5);
+  
+  if (uAutoCenterRepulsion > 0.0) {
+    vec2 centerUV = vec2(0.0, 0.0);
+    float centerDist = length(uv - centerUV);
+    vec2 repulsion = normalize(uv - centerUV) * (uAutoCenterRepulsion / (centerDist + 0.1));
+    uv += repulsion * 0.05;
+  } else if (uMouseRepulsion) {
+    vec2 mousePosUV = (uMouse * uResolution.xy - focalPx) / uResolution.y;
+    float mouseDist = length(uv - mousePosUV);
+    vec2 repulsion = normalize(uv - mousePosUV) * (uRepulsionStrength / (mouseDist + 0.1));
+    uv += repulsion * 0.05 * uMouseActiveFactor;
+  } else {
+    vec2 mouseOffset = mouseNorm * 0.1 * uMouseActiveFactor;
+    uv += mouseOffset;
+  }
+
+  float autoRotAngle = uTime * uRotationSpeed;
+  mat2 autoRot = mat2(cos(autoRotAngle), -sin(autoRotAngle), sin(autoRotAngle), cos(autoRotAngle));
+  uv = autoRot * uv;
+
+  uv = mat2(uRotation.x, -uRotation.y, uRotation.y, uRotation.x) * uv;
+
+  vec3 col = vec3(0.0);
+
+  for (float i = 0.0; i < 1.0; i += 1.0 / NUM_LAYER) {
+    float depth = fract(i + uStarSpeed * uSpeed);
+    float scale = mix(20.0 * uDensity, 0.5 * uDensity, depth);
+    float fade = depth * smoothstep(1.0, 0.9, depth);
+    col += StarLayer(uv * scale + i * 453.32) * fade;
+  }
+
+  if (uLightMode > 0.5) {
+    float energy = max(max(col.r, col.g), col.b);
+    float coverage = clamp(smoothstep(0.0, 0.42, energy) * 0.92, 0.0, 0.92);
+    vec3 ink = clamp(col * 0.48, 0.0, 0.82);
+    gl_FragColor = vec4(mix(vec3(1.0), ink, coverage), 1.0);
+  } else if (uTransparent) {
+    float alpha = length(col);
+    alpha = smoothstep(0.0, 0.3, alpha);
+    alpha = min(alpha, 1.0);
+    gl_FragColor = vec4(col, alpha);
+  } else {
+    gl_FragColor = vec4(col, 1.0);
+  }
+}
+`;
+
+const container = document.getElementById('galaxy-bg');
+if (container) {
+  try {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
+    const gl = renderer.gl;
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
+
+    const uniforms = {
+      uTime: { value: 0 },
+      uResolution: { value: new Float32Array([1, 1, 1]) },
+      uFocal: { value: new Float32Array([0.5, 0.5]) },
+      uRotation: { value: new Float32Array([1, 0]) },
+      uStarSpeed: { value: 0.5 },
+      uDensity: { value: 1.5 },
+      uHueShift: { value: 240 },
+      uSpeed: { value: 1 },
+      uMouse: { value: new Float32Array([0.5, 0.5]) },
+      uGlowIntensity: { value: 0.5 },
+      uSaturation: { value: 0.8 },
+      uMouseRepulsion: { value: true },
+      uTwinkleIntensity: { value: 0.3 },
+      uRotationSpeed: { value: 0.1 },
+      uRepulsionStrength: { value: 2 },
+      uMouseActiveFactor: { value: 0 },
+      uAutoCenterRepulsion: { value: 0 },
+      uTransparent: { value: true },
+      uLightMode: { value: 0 }
+    };
+    const program = new Program(gl, {
+      vertex: vertexShader,
+      fragment: fragmentShader,
+      uniforms
+    });
+    const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
+    gl.canvas.setAttribute('aria-hidden', 'true');
+    container.appendChild(gl.canvas);
+
+    function resize() {
+      const scale = window.innerWidth <= 720 ? 0.65 : 1;
+      const width = Math.max(1, Math.round(container.clientWidth * scale));
+      const height = Math.max(1, Math.round(container.clientHeight * scale));
+      renderer.setSize(width, height);
+      gl.canvas.style.width = '100%';
+      gl.canvas.style.height = '100%';
+      uniforms.uResolution.value[0] = gl.canvas.width;
+      uniforms.uResolution.value[1] = gl.canvas.height;
+      uniforms.uResolution.value[2] = gl.canvas.width / gl.canvas.height;
+      renderer.render({ scene: mesh });
+    }
+
+    let targetX = 0.5;
+    let targetY = 0.5;
+    let targetActive = 0;
+    let smoothActive = 0;
+    function onPointerMove(event) {
+      if (event.pointerType === 'touch') return;
+      targetX = event.clientX / window.innerWidth;
+      targetY = 1 - event.clientY / window.innerHeight;
+      targetActive = 1;
+    }
+    function onPointerLeave() { targetActive = 0; }
+    window.addEventListener('resize', resize, { passive: true });
+    if (!reduceMotion) {
+      window.addEventListener('pointermove', onPointerMove, { passive: true });
+      window.addEventListener('pointerleave', onPointerLeave);
+    }
+    resize();
+
+    let animationId = 0;
+    function update(time) {
+      animationId = requestAnimationFrame(update);
+      if (document.hidden) return;
+      const seconds = time * 0.001;
+      uniforms.uTime.value = seconds;
+      uniforms.uStarSpeed.value = seconds * 0.5 / 10;
+      uniforms.uMouse.value[0] += (targetX - uniforms.uMouse.value[0]) * 0.05;
+      uniforms.uMouse.value[1] += (targetY - uniforms.uMouse.value[1]) * 0.05;
+      smoothActive += (targetActive - smoothActive) * 0.05;
+      uniforms.uMouseActiveFactor.value = smoothActive;
+      renderer.render({ scene: mesh });
+    }
+    if (!reduceMotion) animationId = requestAnimationFrame(update);
+    window.addEventListener('pagehide', () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerleave', onPointerLeave);
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+    }, { once: true });
+  } catch (error) {
+    container.replaceChildren();
+    console.warn('Galaxy background could not start', error);
+  }
+}
+
+  </script>
+</body>
+</html>
+
