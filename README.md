@@ -10,6 +10,7 @@
 | 素材与设计 | 长图切分工具 | 桌面版 Chrome | 自动识别长图切口，支持手动调整并批量导出 | [项目与说明](https://github.com/tianfeng66/long-image-splitter) |
 | 素材与设计 | PSD 字体打包 | macOS 13+ | 找出 PSD 使用的字体，并与 PSD 一起打包 | [下载与说明](https://github.com/tianfeng66/psd-font-pack) |
 | 素材与设计 | 小语种检查 | macOS 13+ | 检测图片、PDF、Word 等文件中的小语种文字并分类导出 | [下载与说明](https://github.com/tianfeng66/minor-language-checker) |
+| 素材与设计 | 批量调色（PS 可选颜色 · 色相/饱和度） | macOS，本机网页 | 把 PS 的可选颜色、色相/饱和度、自然饱和度批量套到整个文件夹，实时对比前后 | [下载与说明](https://github.com/tianfeng66/ps-color-batch) |
 | 视频与 AI | YouTube 下载 + 抽帧 | macOS | 下载视频并按间隔、帧数、帧率或关键帧提取画面 | [项目与说明](https://github.com/tianfeng66/youtube-downloader-frame-extractor) |
 | 视频与 AI | AI 名人介绍视频生成 | Codex 技能环境 | 生成经事实核验的旁白、分段视频提示词和参考图制作方案 | [安装与说明](https://github.com/tianfeng66/ai-mingren-video-generation) |
 | 视频与 AI | 动漫人物传记视频工作流 | 扣子工作流 | 生成动漫传记视频的分镜、画面、旁白、字幕与拼接结果；草稿版需导入后调试 | [导入与说明](https://github.com/tianfeng66/coze-anime-biography-workflow) |
@@ -21,6 +22,7 @@
 
 - 浏览器工具在本机处理文件，按各项目 README 的浏览器要求打开；图片工具箱会请求所选文件夹的读写权限，长图切分工具将结果写入单独目录。
 - 图片分拣与 LUT 调色在本机运行，首次使用需安装 Python 与依赖。文字分拣、色彩分析和构图分析的“移出”操作会移动原文件；建议先用副本试。
+- 批量调色在本机运行，首次启动自动安装运行环境（需联网）；导出到新文件夹，不改动原图。
 - 人像精修 ComfyUI 工作流需安装 4 个插件与约 20.7 GB 模型；目前尚未完整跑通验证。导入 `portrait_refine_003.json` 前，请按项目 README 配置环境。
 - macOS 应用请从各项目的 Releases 或 README 下载安装。具体系统要求与已知限制以原项目说明为准。
 - AI 名人介绍视频生成是技能包，不是可独立打开的应用；安装方式见项目 README。
